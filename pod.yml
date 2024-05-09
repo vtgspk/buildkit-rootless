@@ -27,6 +27,13 @@ spec:
             - workers
         initialDelaySeconds: 5
         periodSeconds: 30
+      securityContext:
+        # Needs Kubernetes >= 1.19
+        seccompProfile:
+          type: Unconfined
+        # To change UID/GID, you need to rebuild the image
+        runAsUser: 1000
+        runAsGroup: 1000
       volumeMounts:
         # Dockerfile has `VOLUME /home/user/.local/share/buildkit` by default too,
         # but the default VOLUME does not work with rootless on Google's Container-Optimized OS
@@ -37,8 +44,6 @@ spec:
   volumes:
     - name: buildkitd
       persistentVolumeClaim:
-        claimName: ebs-sc-claim1
+        claimName: ebs-sc-claim2
   securityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
       fsGroup: 1000
