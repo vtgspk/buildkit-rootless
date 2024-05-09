@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ebs-sc-claim1
+  name: ebs-sc-claim
 spec:
   accessModes:
     - ReadWriteOnce
