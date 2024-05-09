@@ -44,6 +44,6 @@ spec:
   volumes:
     - name: buildkitd
       persistentVolumeClaim:
-        claimName: ebs-sc-claim2
+        claimName: ebs-sc-claim
   securityContext:
       fsGroup: 1000
